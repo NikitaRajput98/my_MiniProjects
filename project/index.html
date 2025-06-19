@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Mini Projects Hub</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #aca9a9;
+    margin: 0; padding: 0;
+  }
+  h1 {
+    font-size: 36px;
+    margin: 20px 0;
+    color: #333;
+  }
+  .button-container {
+    margin-bottom: 20px;
+    background-color: #d3d3d3;
+    padding: 15px;
+    border-radius: 10px;
+    display: inline-block;
+  }
+  button {
+    margin: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+    transition: background-color 0.3s ease;
+  }
+  button:hover {
+    background-color: #0056b3;
+  }
+  button.active {
+    background-color: #004080;
+  }
+  .project {
+    display: none;
+  }
+  .project iframe {
+    width: 90%;
+    max-width: 900px;
+    height: 60vh;
+    border: 2px solid #ccc;
+    margin: 20px auto;
+    display: block;
+  }
+</style>
+</head>
+<body>
+
+<h1>Mini Projects Hub</h1>
+
+<div class="button-container">
+  <button onclick="showProject('project1', this)">Change BG Color</button>
+  <button onclick="showProject('project2', this)">Colour Changer</button>
+  <button onclick="showProject('project3', this)">Digital Clock</button>
+  <button onclick="showProject('project4', this)">Guess Number Game</button>
+  <button onclick="showProject('project5', this)">Key Board Button</button>
+</div>
+
+<div id="project1" class="project">
+  <iframe src="bg_color/index.html" loading="lazy"></iframe>
+</div>
+
+<div id="project2" class="project">
+  <iframe src="color_changer/index.html" loading="lazy"></iframe>
+</div>
+
+<div id="project3" class="project">
+  <iframe src="digital_clock/index.html" loading="lazy"></iframe>
+</div>
+
+<div id="project4" class="project">
+  <iframe src="guess_number/index.html" loading="lazy"></iframe>
+</div>
+
+<div id="project5" class="project">
+  <iframe src="key_Board/index.html" loading="lazy"></iframe>
+</div>
+
+<script>
+  function showProject(id, btn) {
+    // Hide all project containers
+    document.querySelectorAll('.project').forEach(p => {
+      p.style.display = 'none';
+    });
+    // Remove active class from all buttons
+    document.querySelectorAll('.button-container button').forEach(b => {
+      b.classList.remove('active');
+    });
+
+    // Show selected project container
+    const selected = document.getElementById(id);
+    if (selected) {
+      selected.style.display = 'block';
+    } else {
+      console.error('Project not found:', id);
+    }
+
+    // Add active class to clicked button
+    btn.classList.add('active');
+  }
+
+  // Optional: Show first project by default on page load
+  window.onload = function() {
+    const firstButton = document.querySelector('.button-container button');
+    if (firstButton) firstButton.click();
+  }
+</script>
+
+</body>
+</html>
